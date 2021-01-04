@@ -1,0 +1,42 @@
+---
+title: "T-Test"
+author: "Taylor Bonar"
+date: "1/5/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# T-Test -- 6 Step Hypothesis Test
+
+## Hypotheses
+### Null Hypothesis: The average of seven randomly chosen patrons seen leaving the Beach Comber in South Mission Beach at 7pm is 21
+### Alternative Hypothsis: The average of seven randomly chosen patrons seen leaving the Beach Comber in South Mission Beach at 7pm is NOT 21
+
+## Assumptions
+### Data Values are derived from a normal distribution
+
+## Test Statistic
+### We will use t.test's default value for confidence level interval of 0.95
+
+## Rejection Region
+### To reject the hypothesis, a two-sided alternative hypothesis where the seven patrons average age is not 21 will evaluated. If the patrons' average ages is lessthan or greater than 21, we will reject that the average age ofpatrons is 21 or as formerly known as reject the null hypothesis.
+
+## Calculations
+```{r}
+patronAges <- c(25,19,37,29,40,28,31) #Vector of values derived from assumed normal distribution function
+undesiredMean <- 21 # 
+
+t.test(patronAges, y = NULL, # Only have 1 dataset
+       alternative = c("two.sided"), # Looking to not be 21/mu
+       mu = 21, # Value of mean not desired in null hypothesis
+       paired = FALSE, # Y is null therefore no pairs
+       var.equal = TRUE, #No effect as we only have 1 dataset and doing 1 sample t-test
+       conf.level = 0.95)
+```
+
+## Conclusion
+### Summary: The average age of seven patrons leaving at 7pm is not 21. 
+### Analysis, given the mean of the patrons ages, it appears patrons leaving at 7pm are more than 21 and averaged at 29.85714
